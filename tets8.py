@@ -74,8 +74,29 @@ class SingleLinkList(object) :
 					pre = cur
 					cur = cur.next
 
-	def delete_index(self,item):
-		pass
+	def delete_index(self,index):
+		pre = None
+		cur = self._head
+		if index <=0:
+			self._head= cur.next
+
+		elif len(self) <= index:
+			while cur:
+				if cur.next ==None:
+					pre.next = cur.next
+					break
+				else:
+					pre = cur
+					cur = cur.next
+
+
+
+
+		else:
+			while index-1:
+				index -=1;pre = cur;cur = cur.next
+			else:
+				pre.next = cur.next
 
 	def insert(self,pos,item):
 		node = Node(item)
@@ -94,9 +115,6 @@ class SingleLinkList(object) :
 			node.next = cur.next
 			cur.next = node
 
-
-
-
 	def travel(self):
 		cur = self._head
 		while cur:
@@ -104,7 +122,6 @@ class SingleLinkList(object) :
 			cur = cur.next
 
 	def main(self):
-
 		self.append(1)
 		ll.append(2)
 		ll.append(3)
@@ -113,20 +130,16 @@ class SingleLinkList(object) :
 		print(ll.search("c"))
 		print(ll.get(2))
 		ll.travel()
-		ll.delete_elem('b')
-		print('/')
+		# ll.delete_elem('b')
+		print('\n')
 		ll.insert(2, 'tets')
+		ll.delete_index(10)
 		ll.travel()
-		print('/')
-		print(len(self))
-
 
 
 if __name__ == '__main__':
 	ll = SingleLinkList()
 	ll.main()
-
-
 
 
 
