@@ -4,14 +4,12 @@
 
 """
 
-
 class Node(object) :
 	'''init the the  element'''
 
 	def __init__(self,data) :
 		self.elem = data
 		self.next = None
-
 
 class SingleLinkList(object) :
 	'''get the function '''
@@ -39,7 +37,6 @@ class SingleLinkList(object) :
 
 	def get(self,index):
 	# search the element from the index
-
 		if index >=0 & index < len(self):
 			cur = self._head
 			while index:
@@ -73,13 +70,14 @@ class SingleLinkList(object) :
 				else:
 					pre = cur
 					cur = cur.next
+			else:
+				return False
 
 	def delete_index(self,index):
 		pre = None
 		cur = self._head
 		if index <=0:
 			self._head= cur.next
-
 		elif len(self) <= index:
 			while cur:
 				if cur.next ==None:
@@ -88,10 +86,6 @@ class SingleLinkList(object) :
 				else:
 					pre = cur
 					cur = cur.next
-
-
-
-
 		else:
 			while index-1:
 				index -=1;pre = cur;cur = cur.next
@@ -133,7 +127,7 @@ class SingleLinkList(object) :
 		# ll.delete_elem('b')
 		print('\n')
 		ll.insert(2, 'tets')
-		ll.delete_index(10)
+		ll.delete_elem()
 		ll.travel()
 
 
