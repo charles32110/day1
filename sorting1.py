@@ -51,9 +51,39 @@ def shell_sort(alist):
 					break
 		gap //= 2
 
+def merge_sort(seq):
+	n  = len(seq)
+	if n <= 1:
+		return seq
+	mid = n // 2
+	seq_left = merge_sort(seq[:mid])
+	seq_right = merge_sort(seq[mid:])
+	return merge(seq_left,seq_right)
 
+def merge(left,right):
+	left_len , right_len = len(left), len(right)
+	left_point , right_point = 0, 0
+	result = list()
+	while left_point< left_len and right_point <right_len:
+		if left[left_point] >= right[right_point]:
+			result.append(right[right_point])
+			right_point += 1
+		else:
+			result.append(left[left_point])
+			left_point += 1
 
+	result += left[left_point:]
+	result += right[right_point:]
+	return result
 
-alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]
-shell_sort(alist)
-print(alist)
+def quick_sort(seq):
+	if len(seq) < 2:
+		return seq
+	pivot_index = 0
+	pivot = seq[pivot_index]
+	less_part = [i for i in seq[pivot_index+1:] if i <= pivot]
+	more_part = [i for i in seq[pivot_index+1:] if i > pivot]
+	return quick_sort(less_part) + [pivot] + quick_sort(more_part)
+
+alist = [54, 26, 93, 17, 77]
+print(quick_sort(alist))
